@@ -13,8 +13,7 @@ Requisitos para funcionamento:
 * Ter o TypeScript instalado de forma global na máquina, se não tiver use o comando no terminal: 
 npm install -g typescript
 
-* Ter o Angular instalado de forma global na máquina, se não tiver use o comando no terminal: 
-- npm i @angular/cli
+* Ter o Angular instalado de forma global na máquina, se não tiver use o comando no terminal: npm i @angular/cli
 
 Siga as seguintes etapas depois de ter os requisitos básicos:
 
