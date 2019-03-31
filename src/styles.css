@@ -1,0 +1,120 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    margin: 0;
+    font-family: 'Calibri';
+}
+
+.block{
+    display: block;
+}
+.bRed{
+    background: red;
+}
+
+/* ===== APP TOOLBAR ===== */
+.ui-toolbar{
+    padding: 15px !important;
+    border-radius: 0px;
+}
+.ui-toolbar .navbar_top,.ui-sidebar .navbar_sidebar{
+    margin: 0;
+    padding: 0 0 0 20px;
+}
+.ui-toolbar .navbar_top li{
+    list-style: none;
+    display: inline-block;
+}
+.ui-toolbar .navbar_top li a{
+    text-decoration: none;
+    padding: 0 5px 0 5px;
+}
+.ui-toolbar .navbar_top li a:hover,.ui-sidebar .navbar_sidebar li a:hover{
+    text-decoration: underline;
+}
+.btn_open_sidebar{
+    cursor: pointer;
+    font-size: 120%;
+}
+/* TOOLBAR BRAND */
+.ui-toolbar .brand_{
+    font-weight: bold;
+    font-size: 130%;
+    margin: 0 10px 0 10px;
+}
+
+
+
+/* ===== APP SIDEBAR ===== */
+.ui-sidebar{
+    width: 240px !important;
+}
+.ui-sidebar .navbar_sidebar{
+    margin: 10px 0 0 0;
+    padding: 0;
+}
+.ui-sidebar .navbar_sidebar li{
+    list-style: none;
+}
+.ui-sidebar .navbar_sidebar li a{
+    text-decoration: none;
+    padding: 8px;
+    display: block;
+    width: 100%;
+}
+.ui-sidebar .navbar_sidebar li a:hover{
+    background: #EEE;
+    text-decoration: none;
+}
+.ui-sidebar .navbar_sidebar .fa{
+    margin-right: 15px;
+}
+
+
+
+/* ===== Margin CSS ===== */
+.mb-1{
+    margin-bottom: 5px;
+}
+.mb-2{
+    margin-bottom: 10px;
+}
+
+.mt-3{
+    margin-top: 15px;
+}
+
+
+/* ===== Inputs ===== */
+input[type='text'],input[type='number']{
+    padding: 8px;
+}
+
+p-spinner.ng-invalid.ng-touched input,p-dropdown.ng-invalid.ng-touched input,p-calendar.ng-invalid.ng-touched input{
+    border: 1px solid red !important;
+}
+p-spinner.ng-valid.ng-touched input,p-dropdown.ng-valid.ng-touched input,p-calendar.ng-valid.ng-touched input{
+    border: 1px solid green !important;
+}
+
+input.ng-invalid.ng-touched, select.ng-invalid.ng-touched{
+    border: 1px solid red !important;
+}
+
+input.ng-valid.ng-touched, select.ng-valid.ng-touched{
+    border: 1px solid green !important;
+}
+
+.text-danger{
+    color: red !important;
+}
+.text-success{
+    color: green !important;
+}
+
+
+/* ===== Message ===== */
+.ui-message{
+    margin: 20px 0 0 0 !important;
+    display: block !important;
+    padding: 10px !important;
+}

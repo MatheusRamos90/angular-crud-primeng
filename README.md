@@ -1,30 +1,27 @@
-# angular-crud-primeng
-Este é um CRUD simples com Angular 4, usando a biblioteca PrimeNG na versão 4.
+# AngularCrud
 
-No exemplo demonstrado foi utilizado uma lista com produtos cadastrados, podendo ser feitas remoções ou cadastro dos mesmos. 
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.6.
 
-Todo os dados são persistidos no LocalStorage do navegador.
+## Development server
 
-Requisitos para funcionamento: 
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-* Para uso em localhost é necessário usar um terminal de sua preferência como o CMD ou GitBash para rodar o projeto.
+## Code scaffolding
 
-* Ter o Node instalado na máquina, se não tiver faça o download do mesmo aqui: https://nodejs.org/en/download/current/
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-* Ter o TypeScript instalado de forma global na máquina, se não tiver use o comando no terminal: 
-npm install -g typescript
+## Build
 
-* Ter o Angular instalado de forma global na máquina, se não tiver use o comando no terminal: 
-- npm i @angular/cli
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-Siga as seguintes etapas depois de ter os requisitos básicos:
+## Running unit tests
 
-1. Com o terminal de sua preferência aberto vá para a pasta do projeto raiz
-2. Instale o módulos do node com o comando: npm install
-3. Dê o comando de inicialização do servidor do Angular: ng serve
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-Depois disso provavelmente o servidor estará rodando em: http://localhost:4200/
+## Running end-to-end tests
 
-Por: Matheus Ramos - 31/03/2019.
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-Fim.
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

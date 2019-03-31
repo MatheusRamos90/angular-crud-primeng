@@ -1,0 +1,69 @@
+<app-container>
+  <h2>Editar Produto</h2>
+  <a href="produtos/criar" pButton type="button" label="Novo" icon="fa-plus" class="mb-2"></a>
+
+  <form [formGroup]="formAtualizaProduto" (ngSubmit)="submitAtualizaProduto()" novalidate>
+    <div class="ui-g ui-fluid">
+      <div class="ui-g-12 ui-md-3">
+        <div class="ui-inputgroup">
+          <input type="text" pInputText placeholder="Nome" [(ngModel)]="product.nome" formControlName="nome"/>
+        </div>
+        <small *ngIf="formAtualizaProduto.get('nome').valid && formAtualizaProduto.get('nome').touched" class="form-text text-success">Ok</small>
+        <small *ngIf="!formAtualizaProduto.get('nome').valid && formAtualizaProduto.get('nome').touched" class="form-text text-danger">Nome é obrigatório!</small>
+      </div>
+
+      <div class="ui-g-12 ui-md-2">
+          <div class="ui-inputgroup">
+              <p-dropdown [options]="unMedidaOptions" [(ngModel)]="product.unidade_medida" (onChange)="changeMedida($event)" [style]="{'width':'auto'}" editable="editable" placeholder="Unidade de Medida" formControlName="unidade_medida"></p-dropdown>
+          </div>
+          <small *ngIf="!formAtualizaProduto.get('unidade_medida').valid && formAtualizaProduto.get('unidade_medida').touched" class="form-text text-danger">Unidade de Medida é obrigatório!</small>
+      </div>
+
+      <div class="ui-g-12 ui-md-2">
+          <div class="ui-inputgroup">
+              <input type="number" [(ngModel)]="product.quantidade" pInputText min="0" step="0.001" *ngIf="unMedidaOptions[0].value === selectedUnMedida || unMedidaOptions[1].value === selectedUnMedida || formAtualizaProduto.value.unidade_medida === unMedidaOptions[0].value || formAtualizaProduto.value.unidade_medida === unMedidaOptions[1].value" placeholder="Quantidade" formControlName="quantidade"/>
+              <span class="ui-inputgroup-addon" *ngIf="unMedidaOptions[0].value === selectedUnMedida">{{ selectedUnMedida }}</span>
+              <span class="ui-inputgroup-addon" *ngIf="unMedidaOptions[1].value === selectedUnMedida">{{ selectedUnMedida }}</span>
+
+              <input type="number" [(ngModel)]="product.quantidade" pInputText min="0" step="0" *ngIf="unMedidaOptions[2].value === selectedUnMedida || formAtualizaProduto.value.unidade_medida === unMedidaOptions[2].value" placeholder="Quantidade" formControlName="quantidade">
+              <span class="ui-inputgroup-addon" *ngIf="unMedidaOptions[2].value === selectedUnMedida">{{ selectedUnMedida }}</span>
+          </div>
+      </div>
+
+      <div class="ui-g-12 ui-md-2">
+          <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon">$</span>
+              <input type="number" min="0" step="0.01" [(ngModel)]="product.preco" pInputText placeholder="Preço" formControlName="preco"/>
+          </div>
+          <small *ngIf="!formAtualizaProduto.get('preco').valid && formAtualizaProduto.get('preco').touched" class="form-text text-danger">Preço é obrigatório!</small>
+      </div>
+
+      <div class="ui-g-12 ui-md-3">
+          <p-checkbox name="prod_perecivel" [(ngModel)]="product.prod_perecivel" formControlName="prod_perecivel" binary="true" label="Produto Perecível" inputId="prod_perecivel"></p-checkbox>
+      </div>
+
+      <div class="ui-g-12 ui-md-6">
+          <span>Data de Validade</span>
+          <!--<input type="date" pInputText formControlName="data_validade" />-->
+          <p-calendar formControlName="data_validade" [(ngModel)]="product.data_validade" (onSelect)="verificaValidade($event)" [locale]="ptBr" dateFormat="dd/mm/yy" [showIcon]="true"></p-calendar>
+          <small *ngIf="!formAtualizaProduto.get('data_validade').valid && formAtualizaProduto.get('data_validade').touched" class="form-text text-danger">Data de validade é obrigatório!</small>
+          <small *ngIf="productExpired" class="form-text text-danger block">O produto está vencido!</small>
+      </div>
+
+      <div class="ui-g-12 ui-md-6">
+          <span>Data de Fabricação</span>
+          <!--<input type="date" pInputText formControlName="data_fabricacao" />-->
+          <p-calendar formControlName="data_fabricacao" [(ngModel)]="product.data_fabricacao" (onSelect)="verificaFabricacao($event)" [locale]="ptBr" dateFormat="dd/mm/yy" [showIcon]="true"></p-calendar>
+          <small *ngIf="!formAtualizaProduto.get('data_fabricacao').valid && formAtualizaProduto.get('data_fabricacao').touched" class="form-text text-danger">Data de fabricação é obrigatório!</small>
+          <small *ngIf="productFabricateError" class="form-text text-danger block">A data de fabricação deve ser menor que a data de validade!</small>
+      </div>
+
+    </div>
+
+    <div class="mt-3">
+      <button [disabled]="!formAtualizaProduto.valid || productFabricateError" pButton type="submit" label="Salvar" icon="fa-check" class="mb-2 ui-button-success"></button>
+      <a href="" pButton type="button" label="Cancelar" class="mb-2 ui-button-secondary"></a>
+    </div>
+  </form>
+
+</app-container>

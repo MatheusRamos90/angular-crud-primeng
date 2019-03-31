@@ -1,0 +1,47 @@
+<app-container>
+  <p-message *ngIf="message" severity="error" text="{{message}}"></p-message>
+  <h2>Produtos</h2>
+  <a href="produtos/criar" pButton type="button" label="Novo" icon="fa-plus" class="mb-2"></a>
+  <p-dataTable [value]="products">
+    <p-column field="nome" header="Nome"></p-column>
+    <p-column field="unidade_medida" header="Unidade">
+      <ng-template let-un="rowData" pTemplate="body">
+        <p *ngIf="un.unidade_medida === 'kg'">Quilograma (Kg)</p>
+        <p *ngIf="un.unidade_medida === 'lt'">Litros (Lt)</p>
+        <p *ngIf="un.unidade_medida === 'un'">Unidade (Un)</p>
+      </ng-template>
+    </p-column>
+    <p-column field="quantidade" header="Quantidade">
+        <ng-template let-qtd="rowData" pTemplate="body">
+            <p>{{ qtd.quantidade }}</p>
+        </ng-template>
+    </p-column>
+    <p-column field="preco" header="Preço">
+        <ng-template let-price="rowData" pTemplate="body">
+            <p>{{ price.preco | currency:'BRL':true }}</p>
+        </ng-template>
+    </p-column>
+    <p-column field="prod_perecivel" header="Prod. Perecível">
+      <ng-template let-products="rowData" pTemplate="body">
+        <i *ngIf="products.prod_perecivel === true" class="fa fa-check"></i>
+        <i *ngIf="products.prod_perecivel !== true" class="fa fa-close"></i>
+      </ng-template>
+    </p-column>
+    <p-column field="data_validade" header="Data de Validade">
+      <ng-template let-validade="rowData" pTemplate="body">
+        <p>{{ validade.data_validade | date:'dd-MM-yyyy' }}</p>
+      </ng-template>
+    </p-column>
+    <p-column field="data_fabricacao" header="Data de Fabricação">
+      <ng-template let-validade="rowData" pTemplate="body">
+        <p>{{ validade.data_fabricacao | date:'dd-MM-yyyy' }}</p>
+      </ng-template>
+    </p-column>
+    <p-column header="Ação">
+      <ng-template let-prod="rowData" let-id="rowIndex" pTemplate="body">
+        <button (click)="editar(id)" pButton type="button" icon="fa-pencil" pTooltip="Editar" tooltipPosition="top" class="mb-2 ui-button-info"></button>
+        <button (click)="remover(prod)" pButton type="button" icon="fa-trash-o" pTooltip="Remover" tooltipPosition="top" class="mb-2 ui-button-danger"></button>
+      </ng-template>
+    </p-column>
+  </p-dataTable>
+</app-container>

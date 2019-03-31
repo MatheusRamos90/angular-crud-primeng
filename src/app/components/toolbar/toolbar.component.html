@@ -1,0 +1,19 @@
+<p-toolbar>
+  <div class="ui-toolbar-group-left">
+    <span class="btn_open_sidebar" (click)="sidebar = true"><i class="fa fa-bars"></i></span>
+  </div>
+
+  <ul class="navbar_top">
+    <li><a href="" class="brand_">AngularCrud</a></li>
+  </ul>
+
+</p-toolbar>
+
+<p-sidebar [(visible)]="sidebar" [baseZIndex]="10000">
+  <h5 style="font-weight: bold;margin: 5px 0 15px 0;">AngularCrud</h5>
+  <ul class="navbar_sidebar">
+    <li *ngFor="let item of items">
+        <a [href]="item.link"><i [class]="item.icon"></i>{{ item.label }}</a>
+    </li>
+  </ul>
+</p-sidebar>
